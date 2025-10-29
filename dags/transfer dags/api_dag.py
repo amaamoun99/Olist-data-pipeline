@@ -34,7 +34,7 @@ with DAG(
     "api_csv_to_bigquery_dag",
     default_args=default_args,
     description="Fetch CSV API data → Upload to GCS → Load into BigQuery",
-    schedule_interval="@daily",  # runs every day at midnight
+    schedule_interval=None,  # runs every day at midnight
     catchup=False,
     tags=["api", "csv", "gcs", "bigquery, transfer, abdelrahman"],
 ) as dag:
@@ -84,6 +84,7 @@ with DAG(
             task_id=f"fetch_{endpoint}_csv",
             python_callable=fetch_csv_from_api,
             op_args=[endpoint],
+            execution_timeout=timedelta(minutes=10),
         )
 
         # 2️⃣ Upload CSV to GCS
@@ -93,6 +94,7 @@ with DAG(
             dst=gcs_object,
             bucket=GCS_BUCKET,
             mime_type="text/csv",
+            execution_timeout=timedelta(minutes=10),
         )
 
         # 3️⃣ Load into BigQuery
@@ -106,6 +108,7 @@ with DAG(
             write_disposition="WRITE_TRUNCATE",  # full load, replace existing data
             create_disposition="CREATE_IF_NEEDED",
             autodetect=True,
+            execution_timeout=timedelta(minutes=15),
         )
 
         # Chain: Fetch → Upload → Load
