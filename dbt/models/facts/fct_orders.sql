@@ -1,0 +1,28 @@
+{{ config(materialized='table') }}
+
+WITH order_data AS (
+  SELECT
+    o.order_id,
+    o.customer_id,
+    o.order_status,
+    o.order_purchase_timestamp,
+    SUM(oi.price + oi.freight_value) AS total_order_value,
+    SUM(oi.price) AS product_value,
+    SUM(oi.freight_value) AS freight_value,
+    SUM(p.payment_value) AS payment_value
+  FROM {{ ref('stg_orders') }} o
+  LEFT JOIN {{ ref('stg_order_items') }} oi USING (order_id)
+  LEFT JOIN {{ ref('stg_order_payments') }} p USING (order_id)
+  GROUP BY 1, 2, 3, 4
+)
+
+SELECT
+  order_id,
+  customer_id,
+  order_status,
+  order_purchase_timestamp,
+  total_order_value,
+  product_value,
+  freight_value,
+  payment_value
+FROM order_data;
