@@ -8,10 +8,11 @@ sources:
       - name: customers
       - name: orders
       - name: order_items
-      - name: payments
+      - name: payments 
       - name: sellers
       - name: geolocation
       - name: product_category_name_translation
       - name: leads_closed
       - name: leads_qualified
       - name: order_reviews
+

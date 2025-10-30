@@ -1,0 +1,67 @@
+version: 2
+
+############################################################
+#  STAGING MODELS
+############################################################
+models:
+  - name: stg_orders
+    description: "Cleaned and typed version of the raw orders table."
+    columns:
+      - name: order_id
+        tests:
+          - unique
+          - not_null
+      - name: customer_id
+        tests:
+          - not_null
+      - name: order_purchase_ts
+        description: "Timestamp when the order was created."
+      - name: order_status
+        description: "Current status of the order."
+
+  - name: stg_order_items
+    description: "Normalized order item details with numeric price and quantity fields."
+    columns:
+      - name: order_id
+        tests:
+          - relationships:
+              to: ref('stg_orders')
+              field: order_id
+      - name: product_id
+        tests:
+          - not_null
+      - name: price
+        tests:
+          - not_null
+
+  - name: stg_products
+    description: "Product attributes enriched with category names."
+    columns:
+      - name: product_id
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_product_category_name_translation
+    description: "Provides English translations for product categories."
+
+  - name: stg_customers
+    description: "Customer details including unique IDs and location info."
+    columns:
+      - name: customer_id
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_sellers
+    description: "Seller information joined to geographic context."
+    columns:
+      - name: seller_id
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_geolocation
+    description: "Geolocation mapping for zip code prefixes."
+
+

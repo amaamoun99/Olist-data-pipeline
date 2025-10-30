@@ -22,9 +22,9 @@ models:
       +schema: abdelrahman_olist_staging
       +tags: ['staging']
     marts:
-      core:
+      sales:
         +materialized: table   
-        +schema: abdelrahman_olist_marts_core
+        +schema: abdelrahman_olist_marts
         +tags: ['core']
       analytics:
         +materialized: view
