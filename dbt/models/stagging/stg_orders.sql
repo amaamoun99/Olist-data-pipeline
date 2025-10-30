@@ -1,4 +1,4 @@
-{{ config(materialized='view') }}
+{{ config(materialized='table') }}
 
 SELECT
   order_id,
@@ -7,6 +7,9 @@ SELECT
   order_purchase_timestamp,
   order_approved_at,
   order_delivered_customer_date,
-  order_estimated_delivery_date
-FROM {{ source('raw', 'orders') }}
-WHERE order_id IS NOT NULL;
+  order_estimated_delivery_date,
+  order_delivered_carrier_date
+FROM {{ source('abdelrahman_olist_landing', 'orders') }}
+WHERE order_id IS NOT NULL AND customer_id IS NOT NULL
+
+

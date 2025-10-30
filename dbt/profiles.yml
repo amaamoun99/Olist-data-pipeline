@@ -1,10 +1,12 @@
-default:
+olist:
   target: prod
   outputs:
     prod:
       type: bigquery
       method: service-account
-      project: ready-de27
-      dataset: abdelrahman_olist_analytics
-      threads: 4
+      project: ready-de27                       # your GCP project ID
+      dataset: abdelrahman_olist_analytics      # your target dataset (schema)
+      threads: 4                                # number of threads for parallel execution
       keyfile: /opt/airflow/keys/service-account.json
+      timeout_seconds: 30000
+      priority: interactive                     # can be 'batch' for cheaper runs

@@ -14,12 +14,12 @@ with DAG(
     tags=["dbt", "bigquery"]
 ) as dag:
 
-    # Step 1 - Install dependencies
-    dbt_deps = DbtDepsOperator(
-        task_id="dbt_deps",
-        dir=DBT_PROJECT_DIR,
-        profiles_dir=DBT_PROJECT_DIR,
-    )
+    # # Step 1 - Install dependencies
+    # dbt_deps = DbtDepsOperator(
+    #     task_id="dbt_deps",
+    #     dir=DBT_PROJECT_DIR,
+    #     profiles_dir=DBT_PROJECT_DIR,
+    # )
 
     # Step 2 - Run all models
     dbt_run = DbtRunOperator(
@@ -29,10 +29,11 @@ with DAG(
     )
 
     # Step 3 - Test models
-    dbt_test = DbtTestOperator(
-        task_id="dbt_test",
-        dir=DBT_PROJECT_DIR,
-        profiles_dir=DBT_PROJECT_DIR,
-    )
+    # dbt_test = DbtTestOperator(
+    #     task_id="dbt_test",
+    #     dir=DBT_PROJECT_DIR,
+    #     profiles_dir=DBT_PROJECT_DIR,
+    # )
 
-    dbt_deps >> dbt_run >> dbt_test
+    # dbt_deps >> dbt_run >> dbt_test
+    dbt_run

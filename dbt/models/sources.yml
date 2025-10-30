@@ -1,0 +1,17 @@
+version: 2
+
+sources:
+  - name: abdelrahman_olist_landing       # must match the source() name in SQL
+    schema: abdelrahman_olist_landing     # BigQuery dataset where your raw tables live
+    tables:
+      - name: products
+      - name: customers
+      - name: orders
+      - name: order_items
+      - name: payments
+      - name: sellers
+      - name: geolocation
+      - name: product_category_name_translation
+      - name: leads_closed
+      - name: leads_qualified
+      - name: order_reviews
