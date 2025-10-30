@@ -1,4 +1,5 @@
-{{ config(materialized='table') }}
+-- question 1
+{{ config(materialized='view') }}
 
 with customer_values as (
     select * from {{ ref('int_customer_order_values') }}
