@@ -1,4 +1,4 @@
--- models/marts/sales/fct_orders.sql
+{{ config(materialized='table') }}
 select
     o.order_id,
     o.customer_id,

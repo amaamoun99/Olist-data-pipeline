@@ -6,7 +6,7 @@ select
     p.payment_type,
     p.payment_value,
     o.order_purchase_timestamp,
-    date_trunc(month, o.order_purchase_timestamp) as order_month
+    DATE_TRUNC(DATE(o.order_purchase_timestamp), MONTH) as order_month
 from {{ ref('stg_orders') }} o
 join {{ ref('stg_order_payments') }} p
     on o.order_id = p.order_id
