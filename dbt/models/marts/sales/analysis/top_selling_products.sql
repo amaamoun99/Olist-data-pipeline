@@ -1,5 +1,6 @@
 -- question 3
 {{ config(materialized='view') }}
+
 with product_sales as (
     select
         oi.product_id,

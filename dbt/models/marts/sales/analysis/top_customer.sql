@@ -28,4 +28,3 @@ select
     avg_order_value
 from customer_details
 order by total_order_value desc
-limit 10
