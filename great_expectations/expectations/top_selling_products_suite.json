@@ -1,0 +1,50 @@
+{
+  "expectation_suite_name": "top_product_suite",
+  "expectations": [
+    {
+      "expectation_type": "expect_table_columns_to_match_set",
+      "kwargs": {
+        "column_set": [
+          "product_id",
+          "product_category_name",
+          "total_quantity_sold"
+        ]
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": { "column": "product_id" }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": { "column": "product_category_name" }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": { "column": "total_quantity_sold" }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_of_type",
+      "kwargs": { "column": "product_id", "type_": "STRING" }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_of_type",
+      "kwargs": { "column": "product_category_name", "type_": "STRING" }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_of_type",
+      "kwargs": { "column": "total_quantity_sold", "type_": "INTEGER" }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_unique",
+      "kwargs": { "column": "product_id" }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "total_quantity_sold",
+        "min_value": 0
+      }
+    }
+  ]
+}

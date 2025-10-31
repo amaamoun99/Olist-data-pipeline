@@ -1,0 +1,58 @@
+{
+  "expectation_suite_name": "payment_revenue_suite",
+  "expectations": [
+    {
+      "expectation_type": "expect_table_columns_to_match_set",
+      "kwargs": {
+        "column_set": [
+          "payment_method_name",
+          "total_revenue",
+          "pct_revenue"
+        ]
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": { "column": "payment_method_name" }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": { "column": "total_revenue" }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": { "column": "pct_revenue" }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_of_type",
+      "kwargs": { "column": "payment_method_name", "type_": "STRING" }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_of_type",
+      "kwargs": { "column": "total_revenue", "type_": "FLOAT" }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_of_type",
+      "kwargs": { "column": "pct_revenue", "type_": "FLOAT" }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "total_revenue",
+        "min_value": 0
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "pct_revenue",
+        "min_value": 0,
+        "max_value": 100
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_unique",
+      "kwargs": { "column": "payment_method_name" }
+    }
+  ]
+}
