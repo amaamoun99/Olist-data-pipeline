@@ -1,0 +1,13 @@
+olist:
+  target: prod
+  outputs:
+    prod:
+      type: bigquery
+      method: service-account
+      project: ready-de27 
+      dataset: abdelrahman_olist_staging 
+      threads: 4 
+      keyfile: /opt/airflow/keys/service-account.json
+      timeout_seconds: 30000
+      priority: interactive 
+      location: EU 

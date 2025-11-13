@@ -1,0 +1,34 @@
+name: 'olist_data_pipeline'
+version: '1.0.0'
+config-version: 2
+
+profile: 'olist'  
+
+# Define where dbt looks for models, seeds, snapshots, tests, etc.
+model-paths: ["models"]
+seed-paths: ["seeds"]
+snapshot-paths: ["snapshots"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+macro-paths: ["macros"]
+
+# Define the default materialization strategy for each folder
+models:
+    +persist_docs:
+      relation: true
+      columns: true
+    staging:
+      +materialized: table
+      +schema: abdelrahman_olist_staging
+      +tags: ['staging']
+    marts:
+      sales:
+        +materialized: table   
+        +schema: abdelrahman_olist_marts
+        +tags: ['core']
+      analytics:
+        +materialized: view
+        +schema: abdelrahman_olist_analytics
+        +tags: ['analytics']
+
+
