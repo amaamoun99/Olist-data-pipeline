@@ -61,11 +61,3 @@ You are expected to build views in BigQuery from the dimension and fact tables a
 
 - Testing is done in your local Airflow, for the final version we’ll turn on the composer so you can experience the production release and code reviews.
 
-- For any questions, don’t hesitate to use our slack channel to ask for help
-
-- For any questions, don’t hesitate to use our slack channel to ask for help
-
-### Deliverables:
-- Architecture diagram (ERD)
-- Project documentation
-- Final presentation
