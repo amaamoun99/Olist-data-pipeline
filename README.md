@@ -1,4 +1,4 @@
-# Data Engineering Project - Ready D25 &nbsp; &nbsp; &nbsp;<img align="center" width="50" alt="image" src="https://github.com/Ready-Talent/data-engineering-project-template/assets/70844012/4c10ad15-6b48-4ce3-9829-9e823191b410">
+# Data Engineering Project - Ready D27 &nbsp; &nbsp; &nbsp;<img align="center" width="50" alt="image" src="https://github.com/Ready-Talent/data-engineering-project-template/assets/70844012/4c10ad15-6b48-4ce3-9829-9e823191b410">
 
 ## Project Description 
 You work in a major consultancy firm, and you have been tasked to lead a new project. The Brazilian e-commerce company “Olist” has hired your consulting firm to produce some insights using its data. You will lead this project which means you have to plan what tools to use, models to build and approach to take.
