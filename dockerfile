@@ -20,7 +20,10 @@ RUN pip install --no-cache-dir --upgrade pip setuptools wheel && \
     pip install --no-cache-dir \
         dbt-core==1.9.2 \
         dbt-bigquery==1.9.2 \
-        airflow-dbt==0.4.0
+        airflow-dbt==0.4.0 \
+        google-auth==2.29.0
+
+
 
 # ✅ Ensure folders exist
 RUN mkdir -p /opt/airflow/dags /opt/airflow/logs /opt/airflow/plugins

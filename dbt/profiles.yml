@@ -1,12 +1,13 @@
-default:
+olist:
+  target: prod
   outputs:
-    dev:
-      type: postgres
-      host: postgres
-      port: 5432
-      user: airflow
-      password: airflow
-      dbname: airflow
-      schema: public
-      threads: 1
-  target: dev
+    prod:
+      type: bigquery
+      method: service-account
+      project: ready-de27 # your GCP project ID
+      dataset: abdelrahman_olist_staging # your target dataset (schema)
+      threads: 4 # number of threads for parallel execution
+      keyfile: /opt/airflow/keys/service-account.json
+      timeout_seconds: 30000
+      priority: interactive # can be 'batch' for cheaper runs
+      location: EU # Change to your actual dataset location
